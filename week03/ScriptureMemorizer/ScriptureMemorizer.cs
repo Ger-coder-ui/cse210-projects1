@@ -1,10 +1,10 @@
 public class ScriptureMemorizer
 {
-    private ScriptureText _scriptureText;
+    private Scripture _scriptureText;
 
     public ScriptureMemorizer(ScriptureReference reference, string text)
     {
-        _scriptureText = new ScriptureText(reference, text);
+        _scriptureText = new Scripture(reference, text);
     }
 
     public void Start()

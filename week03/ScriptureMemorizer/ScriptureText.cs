@@ -1,12 +1,12 @@
 using System;
 using System.Collections.Generic;
 
-public class ScriptureText
+public class Scripture
 {
     public ScriptureReference Reference { get; }
     private List<Word> Words { get; }
 
-    public ScriptureText(ScriptureReference reference, string text)
+    public Scripture(ScriptureReference reference, string text)
     {
         Reference = reference;
         Words = new List<Word>();
@@ -19,10 +19,10 @@ public class ScriptureText
     public void Display()
     {
         Console.Clear();
-        Console.Writeline(Reference);
+        Console.WriteLine(Reference);
         foreach (var word in Words)
         {
-            console.Write(word.Display + " ");
+            Console.Write(word.GetDisplayText() + " ");
         }
         Console.WriteLine();
     }
@@ -31,15 +31,15 @@ public class ScriptureText
     {
         var random = new Random();
         var hiddenCount = 0;
-        var visibleWords = Words.FindAll(w => w.Display == w.Original);
+        var visibleWords = Words.FindAll(w => !w.IsHidden());
 
-        if (visibleWords.count == 0)
+        if (visibleWords.Count == 0)
             return false;
         while (hiddenCount < count && visibleWords.Count > 0)
         {
             var index = random.Next(visibleWords.Count);
             visibleWords[index].Hide();
-            visibleWords = Words.FindAll(w => w.Display == w.Original);
+            visibleWords = Words.FindAll(w => !w.IsHidden());
             hiddenCount++;
         }
 
@@ -49,6 +49,6 @@ public class ScriptureText
 
     public bool IsFullyHidden()
     {
-        return Words.All(w => w.Display == new string('_', w.Original.Length));
+        return Words.All(w => w.IsHidden());
     }
 }
