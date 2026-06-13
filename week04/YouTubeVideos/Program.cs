@@ -75,28 +75,4 @@ namespace YouTubeVideoTracker
 
             // Adding comments to video4
             video4.AddComment(new Comment("Jack", "Perfect for beginners."));
-            video4.AddComment(new Comment("Kara", "I feel relaxed already."));
-            video4.AddComment(new Comment("Leo", "Subbed!"));
-
-            // List of all videos
-            var videos = new List<Video> { video1, video2, video3, video4 };
-
-            // Displaying video details
-            foreach (var video in videos)
-            {
-                Console.WriteLine($"Title: {video.Title}");
-                Console.WriteLine($"Author: {video.Author}");
-                Console.WriteLine($"Length: {video.LengthInSeconds} seconds");
-                Console.WriteLine($"Number of Comments: {video.GetCommentCount()}");
-                Console.WriteLine("Comments:");
-
-                foreach (var comment in video.GetComments())
-                {
-                    Console.WriteLine($"- {comment.CommenterName}: {comment.Text}");
-                }
-
-                Console.WriteLine(new string('-', 40));
-            }
-        }
-    }
-}
+            video4.AddComment(new Comment("Kara", "I 
